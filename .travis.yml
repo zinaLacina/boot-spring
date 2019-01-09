@@ -5,3 +5,6 @@ services:
 
 before_install:
   - docker build -t zinalacina/docker-react-aws -f Dockerfile.dev .
+
+script:
+  - docker run zinalacina/docker-react-aws npm run test -- --coverage
