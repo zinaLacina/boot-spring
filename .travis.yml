@@ -8,3 +8,16 @@ before_install:
 
 script:
   - docker run zinalacina/docker-react-aws npm run test -- --coverage
+
+deploy:
+  provider: elasticbeanstalk
+  region: "ap-northeast-1"
+  app: "docker"
+  env: "docker-env"
+  bucket_name: "elasticbeanstalk-ap-northeast-1-300675951292"
+  bucket_path: "docker"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY"
